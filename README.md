@@ -42,15 +42,15 @@ $ gradle jacocoTestReport
 ## Output of running the application
 
 ```text
-20:55:14.166 [main] INFO  com.gumtree.addressbook.Application - How many males are in the address book? Answer: 3
-20:55:14.170 [main] INFO  com.gumtree.addressbook.Application - Who is the oldest person in the address book? Answer: Wes Jackson
-20:55:14.171 [main] INFO  com.gumtree.addressbook.Application - How many days older is Bill than Paul? Answer: 2862 days
+INFO  com.gumtree.addressbook.Application - How many males are in the address book? Answer: 3
+INFO  com.gumtree.addressbook.Application - Who is the oldest person in the address book? Answer: Wes Jackson
+INFO  com.gumtree.addressbook.Application - How many days older is Bill than Paul? Answer: 2862 days
 ```
 
 ## Some notable observations
 
-- Viewing the commit log will show that failing tests were committed. This was intended to 
-demonstrate the process of TDD.
+- Viewing the commit log will show that failing tests were committed. This was intended in order to 
+demonstrate the process of TDD but would not be usual practise as it generally breaks the build.
 
 - The task is relatively trivial if you take it at face value and assume things like: -
    - we do not need to consider a larger dataset for the address book.
