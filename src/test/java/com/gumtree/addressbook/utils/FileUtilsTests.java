@@ -11,9 +11,10 @@ public class FileUtilsTests {
 
   @Test
   public void resultSizeIsAsExpected() {
-    Optional<List<String>> results = FileUtils.readLinesFromSourceFile("TestFile");
-    assertEquals("Failure: number of lines in file should be reflected in result size",
-            3, results.get().size());
+    Optional<List<String>> results = FileUtils.readLinesFromSourceFile("AddressBook");
+    assertEquals("Failure: number of lines in address source file should be reflected " +
+                    "in result size",
+            5, results.get().size());
   }
 
   @Test
