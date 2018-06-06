@@ -37,18 +37,21 @@ public class AddressBook {
    */
   public long ageDiffInDaysBetweenTwoPersonsInBook(String name1, String name2) throws
           AddressNotFoundException {
-      AddressBookEntry person1 = getEntryByName(name1).orElseThrow(AddressNotFoundException::new);
-      AddressBookEntry person2 = getEntryByName(name2).orElseThrow(AddressNotFoundException::new);
-      return ChronoUnit.DAYS.between(person1.dob, person2.dob);
+    AddressBookEntry person1 = getEntryByName(name1);
+    AddressBookEntry person2 = getEntryByName(name2);
+    return ChronoUnit.DAYS.between(person1.dob, person2.dob);
   }
 
-  private Optional<AddressBookEntry> getEntryByName(String name) {
-    return Optional.ofNullable(this.entries.stream().filter(person -> person
+  private AddressBookEntry getEntryByName(String name) throws
+          AddressNotFoundException {
+    List<AddressBookEntry> result = this.entries.stream().filter(person -> person
             .getName()
             .equalsIgnoreCase(name))
-            .collect(Collectors.toList())
-            .get(0)
-    );
+            .collect(Collectors.toList());
+    if (result.isEmpty())
+      throw new AddressNotFoundException();
+    else
+      return result.get(0);
   }
 
   @Override
