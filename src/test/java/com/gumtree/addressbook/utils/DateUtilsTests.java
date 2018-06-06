@@ -3,9 +3,6 @@ package com.gumtree.addressbook.utils;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 
