@@ -49,6 +49,9 @@ $ gradle jacocoTestReport
 
 ## Some notable observations
 
+- Viewing the commit log will show that failing tests were committed. This was intended to 
+demonstrate the process of TDD.
+
 - The task is relatively trivial if you take it at face value and assume things like: -
    - we do not need to consider a larger dataset for the address book.
    - there are no concurrency requirements. 
