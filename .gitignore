@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+
+# Local config.
+.idea
+.gradle
+
+# Build
+out
+
+# Project generated files
+*.class
+*.log
