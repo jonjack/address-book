@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class AddressBookEntry {
 
-  private final String name;
-  private final Gender gender;
-  private final LocalDate dob;
+  final String name;
+  final Gender gender;
+  final LocalDate dob;
 
   public AddressBookEntry(String name, Gender gender, LocalDate dob) {
     this.name = name;
