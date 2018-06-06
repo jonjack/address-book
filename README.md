@@ -72,3 +72,10 @@ hence the behaviours that operate on an `AddressBook` are part of that domain mo
 - `AddressBookService` is a singleton since we do not need more than one instance to perform it's
  tasks. Furthermore, it can restrict the number of times we read the input file and therefore 
  reduce IO.
+ 
+- Some operations are very inefficient - notably `AddressBook.getEntryByName` which searches for 
+elements by filtering the whole Address Book each time. This is acceptable for such a 
+small dataset but should never be used in production. If I spent more time on this demo then the next 
+thing I would do is possibly improve the efficiency of `AddressBook.getEntryByName` either by 
+converting to some collection with less time complexity search behaviour or by doing something 
+like sorting and binary searching over the underlying list implementation.
