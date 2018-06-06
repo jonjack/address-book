@@ -8,6 +8,11 @@ Write a Java application that reads the AddressBook file and answers the followi
 2. Who is the oldest person in the address book?
 3. How many days older is Bill than Paul?
 
+## Some specs
+
+- Project was built with Java build "1.8.0_152"
+- Logs are written to a `logs` directory in the root of the application home.
+
 ## Running the demo
 
 To build the application.
@@ -26,6 +31,20 @@ To run the application.
 
 ```
 $ gradle run
+```
+
+To generate a test code coverage report.
+
+```
+$ gradle jacocoTestReport
+```
+
+## Output of running the application
+
+```text
+20:55:14.166 [main] INFO  com.gumtree.addressbook.Application - How many males are in the address book? Answer: 3
+20:55:14.170 [main] INFO  com.gumtree.addressbook.Application - Who is the oldest person in the address book? Answer: Wes Jackson
+20:55:14.171 [main] INFO  com.gumtree.addressbook.Application - How many days older is Bill than Paul? Answer: 2862 days
 ```
 
 ## Some notable observations
