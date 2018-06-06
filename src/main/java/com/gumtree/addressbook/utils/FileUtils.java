@@ -16,6 +16,13 @@ public class FileUtils {
 
   private static final Logger LOG = LoggerFactory.getLogger(FileUtils.class);
 
+  /**
+   * Returns a representation of a file resource as a List of Lines.
+   * A line is represented as a single String.
+   * The file should reside in the local resource path.
+   *
+   * @param filename
+   */
   public static Optional<List<String>> readLinesFromSourceFile(String filename) {
     Optional<List<String>> lines = Optional.empty();
     Optional<URL> opt = Optional.ofNullable(FileUtils.class.getClassLoader().getResource(filename));
@@ -29,4 +36,5 @@ public class FileUtils {
     }
     return lines;
   }
+  
 }
