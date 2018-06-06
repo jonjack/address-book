@@ -47,8 +47,14 @@ public class AddressBookTests {
   @Test
   public void gettingAgeDifferenceBetweenTwoPeopleReturnsCorrectResult() throws
           AddressNotFoundException {
-    long diffInDays = ab.ageDiffInDaysBetweenTwoPersonsInBook("Bill McKnight", "Paul " + "Robinson");
+    long diffInDays = ab.ageDiffInDaysBetweenTwoPersonsInBook("Bill McKnight", "Paul Robinson");
     assertEquals("Failure: diff in age between two people in book not as expected", 2862, diffInDays);
+  }
+
+  @Test(expected = AddressNotFoundException.class)
+  public void testAddressNotFoundExceptionIsThrownAsExpected() throws
+          AddressNotFoundException {
+    ab.ageDiffInDaysBetweenTwoPersonsInBook("NonExistentEntry", "NonExistentEntry");
   }
 
 }
