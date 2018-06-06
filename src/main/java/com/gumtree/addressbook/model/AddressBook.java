@@ -1,7 +1,13 @@
 package com.gumtree.addressbook.model;
 
+import com.gumtree.addressbook.exception.AddressNotFoundException;
+
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 
@@ -16,15 +22,33 @@ public class AddressBook {
   }
 
   public int numberOfMalesInBook() {
-    throw new UnsupportedOperationException("Not yet implemented");
+    return this.entries.stream().filter(person -> person.gender.equals(Gender.MALE)).
+            collect(Collectors.toList()).size();
   }
 
   public AddressBookEntry oldestPersonInBook() {
-    throw new UnsupportedOperationException("Not yet implemented");
+    return this.entries.stream().min(Comparator.comparing(person -> person.dob)).get();
   }
 
-  public int ageDifferenceInDaysBetweenTwoPersonsInBook(String name1, String name2) {
-    throw new UnsupportedOperationException("Not yet implemented");
+  /**
+   * Note that this implementation would be extremely inefficient for anything but
+   * our trivially small Address book sample since the helper method getEntryByName reduces
+   * the complete address book for each entry.
+   */
+  public long ageDiffInDaysBetweenTwoPersonsInBook(String name1, String name2) throws
+          AddressNotFoundException {
+      AddressBookEntry person1 = getEntryByName(name1).orElseThrow(AddressNotFoundException::new);
+      AddressBookEntry person2 = getEntryByName(name2).orElseThrow(AddressNotFoundException::new);
+      return ChronoUnit.DAYS.between(person1.dob, person2.dob);
+  }
+
+  private Optional<AddressBookEntry> getEntryByName(String name) {
+    return Optional.ofNullable(this.entries.stream().filter(person -> person
+            .getName()
+            .equalsIgnoreCase(name))
+            .collect(Collectors.toList())
+            .get(0)
+    );
   }
 
   @Override

@@ -7,12 +7,24 @@ public class AddressBookEntry {
 
   final String name;
   final Gender gender;
-   LocalDate dob;
+  final LocalDate dob;
 
   public AddressBookEntry(String name, Gender gender, LocalDate dob) {
     this.name = name;
     this.gender = gender;
     this.dob = dob;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Gender getGender() {
+    return gender;
+  }
+
+  public LocalDate getDob() {
+    return dob;
   }
 
   @Override
@@ -38,5 +50,5 @@ public class AddressBookEntry {
   public int hashCode() {
     return Objects.hash(name, gender, dob);
   }
-  
+
 }
