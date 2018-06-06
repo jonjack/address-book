@@ -24,7 +24,8 @@ public class FileUtils {
       Path path = Paths.get(url.toURI());
       lines = Optional.ofNullable(Files.readAllLines(path));
     } catch (URISyntaxException | IOException ex) {
-      // log problem
+      LOG.error("Problem reading source file {} in path {} - {}", filename,
+              Paths.get("resources").toUri(), ex.getClass());
     }
     return lines;
   }
