@@ -14,4 +14,13 @@ public class AddressBookEntry {
     this.dob = dob;
   }
 
+  @Override
+  public String toString() {
+    return "AddressBookEntry{" +
+            "name='" + name + '\'' +
+            ", gender=" + gender +
+            ", dob=" + dob +
+            '}';
+  }
+
 }
