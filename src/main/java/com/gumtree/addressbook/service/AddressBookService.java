@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class AddressBookService {
 
   private static final Logger LOG = LoggerFactory.getLogger(AddressBookService.class);
-  private static final String ADDRESS_BOOK_NAME = "AddressBook";
+  private static final String ADDRESS_BOOK_NAME = "AddressBook";  // usually inject this at runtime
   private static AddressBookService service;
   private static AddressBook book;
   private static final int EXPECTED_COLUMNS_ON_CSV_LINE = 3;
@@ -51,15 +51,15 @@ public class AddressBookService {
 
   private static Function<List<String>, AddressBookEntry> mapLineToAddressBookEntry = new
           Function<List<String>, AddressBookEntry>() {
-    public AddressBookEntry apply(List<String> csvline) {
-      List<String> values = csvline.stream()
-              .map(x -> x.trim())
-              .collect(Collectors.toList());
-      String name = values.get(0);
-      Gender gender = Gender.valueOf(values.get(1).toUpperCase());
-      LocalDate dob = DateUtils.stringToDateConvertor(values.get(2));
-      return new AddressBookEntry(name, gender, dob);
-    }
-  };
+            public AddressBookEntry apply(List<String> csvline) {
+              List<String> values = csvline.stream()
+                      .map(x -> x.trim())
+                      .collect(Collectors.toList());
+              String name = values.get(0);
+              Gender gender = Gender.valueOf(values.get(1).toUpperCase());
+              LocalDate dob = DateUtils.stringToDateConvertor(values.get(2));
+              return new AddressBookEntry(name, gender, dob);
+            }
+          };
 
 }
